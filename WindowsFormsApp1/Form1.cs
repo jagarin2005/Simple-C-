@@ -1,14 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Diagnostics;
-using System.Drawing;
-using System.Linq;
-using System.Numerics;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace WindowsFormsApp1
@@ -20,69 +10,85 @@ namespace WindowsFormsApp1
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void InitializeComponent()
         {
-            string str = "";
-            RadioButton radioButtons = groupBox1.Controls.OfType<RadioButton>()
-                                                .FirstOrDefault(n => n.Checked);
-            List<CheckBox> checkBoxs = groupBox2.Controls.OfType<CheckBox>()
-                                                .Reverse()
-                                                .ToList();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.simpleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.radioAndCheckboxToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.label1 = new System.Windows.Forms.Label();
+            this.checkboxAndListboxToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuStrip1.SuspendLayout();
+            this.SuspendLayout();
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.simpleToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(284, 24);
+            this.menuStrip1.TabIndex = 0;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // simpleToolStripMenuItem
+            // 
+            this.simpleToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.radioAndCheckboxToolStripMenuItem,
+            this.checkboxAndListboxToolStripMenuItem});
+            this.simpleToolStripMenuItem.Name = "simpleToolStripMenuItem";
+            this.simpleToolStripMenuItem.Size = new System.Drawing.Size(55, 20);
+            this.simpleToolStripMenuItem.Text = "Simple";
+            // 
+            // radioAndCheckboxToolStripMenuItem
+            // 
+            this.radioAndCheckboxToolStripMenuItem.Name = "radioAndCheckboxToolStripMenuItem";
+            this.radioAndCheckboxToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
+            this.radioAndCheckboxToolStripMenuItem.Text = "Radio And Checkbox";
+            this.radioAndCheckboxToolStripMenuItem.Click += new System.EventHandler(this.radioAndCheckboxToolStripMenuItem_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("4815_KwangMD_Catthai", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.label1.Location = new System.Drawing.Point(61, 95);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(160, 78);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Hello World\r\nWelcome to Simple\r\nWindows Form App";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // checkboxAndListboxToolStripMenuItem
+            // 
+            this.checkboxAndListboxToolStripMenuItem.Name = "checkboxAndListboxToolStripMenuItem";
+            this.checkboxAndListboxToolStripMenuItem.Size = new System.Drawing.Size(198, 22);
+            this.checkboxAndListboxToolStripMenuItem.Text = "ComboBox And Listbox";
+            this.checkboxAndListboxToolStripMenuItem.Click += new System.EventHandler(this.checkboxAndListboxToolStripMenuItem_Click);
+            // 
+            // Form1
+            // 
+            this.ClientSize = new System.Drawing.Size(284, 261);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.menuStrip1);
+            this.Name = "Form1";
+            this.Text = "Simple Form App";
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
+            this.ResumeLayout(false);
+            this.PerformLayout();
 
-            switch (radioButtons.Name)
-            {
-                case "radioButton1":
-                    str += "R1";
-                    break;
-                case "radioButton2":
-                    str += "R2";
-                    break;
-                case "radioButton3":
-                    str += "R3";
-                    break;
-                default:
-                    str += "No Radio Selected";
-                    break;
-            }
-
-            str += Environment.NewLine;
-
-            foreach (var chkBox in checkBoxs)
-            {
-                if (chkBox.Checked)
-                {
-                    switch (chkBox.Name)
-                    {
-                        case "checkBox1":
-                            str += "CB1 ";
-                            break;
-                        case "checkBox2":
-                            str += "CB2 ";
-                            break;
-                        case "checkBox3":
-                            str += "CB3";
-                            break;
-                        default:
-                            str += "No Checkbox Selected";
-                            break;
-                    }
-                }
-            }
-
-            MessageBox.Show(str, "User Selected");
-            
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void radioAndCheckboxToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            radioButton1.Checked = true;
-            radioButton2.Checked = false;
-            radioButton3.Checked = false;
-
-            checkBox1.Checked = false;
-            checkBox2.Checked = false;
-            checkBox3.Checked = false;
+            Form radioAndCheckbox = new RadioAndCheckBoxForm();
+            radioAndCheckbox.Show();
         }
 
+        private void checkboxAndListboxToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form comboboxAndListbox = new ComboBoxAndListBoxForm();
+            comboboxAndListbox.Show();
+        }
     }
 }
